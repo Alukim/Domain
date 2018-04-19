@@ -1,0 +1,11 @@
+title Get User
+
+ExternalProject->AuthenticationHandler: GetUser(Token)
+note right of AuthenticationHandler: Walidacja przes³anych danych.
+alt PoprawneDane
+    note right of AuthenticationHandler: Pobranie informacji o u¿ytkowniku
+    AuthenticationHandler->ExternalProject: UserResponse(Username)
+else
+    note right of AuthenticationHandler: Rzuceniem odpowiedniego wyj¹tku informuj¹cego o b³êdzie.
+    AuthenticationHandler-> ExternalProject: Exception()
+    note left of ExternalProject: B³¹d przy próbie logowania
