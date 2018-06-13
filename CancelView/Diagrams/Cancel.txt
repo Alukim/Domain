@@ -1,0 +1,15 @@
+title Cancel
+
+View->AuthenticationController: Authenticate(Username, Password)
+AuthenticationController->View: Token
+View->OrderController: CancelOrder(Order)
+OrderController->OrderHandler: CancelOrder(Order)
+note right of OrderHandler: Walidacja przesłanych danych
+alt PoprawneDane
+    OrderHandler->OrderRepository: RemoveOrder(Order)
+    OrderRepository->OrderHandler: Status
+    OrderHandler-> OrderController: Status
+    OrderController->View: Status
+else
+    OrderHandler->OrderController: Exception()
+    OrderController->View: Exception()
