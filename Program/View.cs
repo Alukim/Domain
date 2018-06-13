@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class View
+    public class View
     {
+        public async Task<Token> Login(string username, string password)
+        {
+            var authenticationController = new AuthenticationController();
+            var token = await authenticationController.Authenticate(username, password);
+            return token;
+        }
+
 
         public void RateMeal(string comment, Meal meal)
         {
