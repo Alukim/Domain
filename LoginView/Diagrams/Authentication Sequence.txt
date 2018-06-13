@@ -1,15 +1,15 @@
 title Authentication Sequence
 
-View->Controller: Login(Username, Password)
-Controller->AuthenticationHandler: Authenticate(Username, Password)
-note right of AuthenticationHandler: Walidacja przes³anych danych.
+View->AuthenticationController: Login(Username, Password)
+AuthenticationController->AuthenticationHandler: Authenticate(Username, Password)
+note right of AuthenticationHandler: Walidacja przesanych danych.
 alt PoprawneDane
     note right of AuthenticationHandler: Generacja tokenu autoryzacyjnego.
-    AuthenticationHandler->Controller: AuthenticationResponse(Token)
-    Controller->View: Token
+    AuthenticationHandler->AuthenticationController: AuthenticationResponse(Token)
+    AuthenticationController->View: Token
     note left of View: U¿ytkownik zosta³ zalogowany
 else
     note right of AuthenticationHandler: Rzuceniem odpowiedniego wyj¹tku informuj¹cego o b³êdzie.
-    AuthenticationHandler-> Controller: Exception()
-    Controller->View: Exception()
+    AuthenticationHandler-> AuthenticationController: Exception()
+    AuthenticationController->View: Exception()
     note left of View: B³¹d przy próbie logowania
